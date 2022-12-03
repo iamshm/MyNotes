@@ -1,7 +1,6 @@
 import React from "react";
 import { Dimensions, Pressable, StyleSheet, useColorScheme, View } from "react-native";
 import Icon from "react-native-vector-icons/AntDesign";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { RoutesEnum } from "../utils/constant";
 
 const StickyBottomNav = ({ navigation }: { navigation: any }) => {
@@ -13,16 +12,15 @@ const StickyBottomNav = ({ navigation }: { navigation: any }) => {
     const handleAddPress = () => {
         navigation.navigate(RoutesEnum.NOTE_SCREEN);
     };
-    const handleDrawPress = () => {};
 
     return (
         <View style={[backgroundStyle, styles.container]}>
             <Pressable onPress={handleAddPress} style={[styles.add, styles.button]}>
                 <Icon name="plus" size={35} color={"white"} />
             </Pressable>
-            <Pressable onPress={handleDrawPress} style={[styles.draw, styles.button]}>
+            {/* <Pressable onPress={handleDrawPress} style={[styles.draw, styles.button]}>
                 <MaterialCommunityIcons name="draw" size={40} color={"black"} />
-            </Pressable>
+            </Pressable> */}
         </View>
     );
 };

@@ -29,6 +29,7 @@ const NoteScreen = ({ route, navigation }: { route?: any; navigation: any }) => 
         if (!note) {
             return;
         }
+        console.log(note.backGroundColor);
         setNoteData({
             id: note.id,
             heading: note.heading,
@@ -37,6 +38,7 @@ const NoteScreen = ({ route, navigation }: { route?: any; navigation: any }) => 
             backGroundColor: note.backGroundColor,
         });
     };
+
     useEffect(() => {
         if (!params?.id) {
             return;
@@ -45,7 +47,7 @@ const NoteScreen = ({ route, navigation }: { route?: any; navigation: any }) => 
     }, []);
 
     const backgroundStyle = {
-        backgroundColor: params?.id ? "white" : noteData.backGroundColor,
+        backgroundColor: noteData.backGroundColor,
     };
 
     const handleHeadingUpdate = (val: string) => {
