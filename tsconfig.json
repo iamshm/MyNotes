@@ -1,0 +1,29 @@
+// prettier-ignore
+{
+  "extends": "@tsconfig/react-native/tsconfig.json",     /* Recommended React Native TSConfig base */
+  "compilerOptions": {
+    "typeRoots": ["@types,node_modules/@types"],
+    "jsx": "react-native",
+    "skipLibCheck": true   ,             
+    "allowJs": true,
+    "checkJs": false,
+    "baseUrl": "./",
+    "rootDir": "./",
+    "outDir": "./build",
+    "target": "ES6",
+    "module": "commonjs",
+    "allowSyntheticDefaultImports": true,
+  },
+  "exclude": [
+    "node_modules",
+    "assets.d.ts",
+    "babel.config.js",
+    "metro.config.js",
+    "build",
+    "**/tests/*.test.ts",
+    "**/__mocks__/*",
+    "**/__tests__/*",
+    "./android",
+    "./ios"
+  ]
+}

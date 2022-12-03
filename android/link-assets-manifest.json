@@ -1,0 +1,77 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/Lufga-Black.otf",
+      "sha1": "f8fcf2cb08e1e6ccca2b2f4099a6377f86af70cc"
+    },
+    {
+      "path": "assets/fonts/Lufga-BlackItalic.otf",
+      "sha1": "6f943dfa08566fe62c1a341fcd96641cacf62dab"
+    },
+    {
+      "path": "assets/fonts/Lufga-Bold.otf",
+      "sha1": "c8ea8c317b5aefada6e2b1fefcb2f5b0785c75b6"
+    },
+    {
+      "path": "assets/fonts/Lufga-BoldItalic.otf",
+      "sha1": "90fae8398348e340d7fb166efd97ce31eba9a1e2"
+    },
+    {
+      "path": "assets/fonts/Lufga-ExtraBold.otf",
+      "sha1": "3c3450f060df464185a5b3d477c39583ea615618"
+    },
+    {
+      "path": "assets/fonts/Lufga-ExtraBoldItalic.otf",
+      "sha1": "4e0a06d976c10d5ce6d4a963c228fff461d484b6"
+    },
+    {
+      "path": "assets/fonts/Lufga-ExtraLight.otf",
+      "sha1": "a7cab9ea411b9f78f2dbeedba938cdcd9850ca5f"
+    },
+    {
+      "path": "assets/fonts/Lufga-ExtraLightItalic.otf",
+      "sha1": "b1b0477445fb28f307fb07ca48e4cf27d5beb09c"
+    },
+    {
+      "path": "assets/fonts/Lufga-Italic.otf",
+      "sha1": "bc89e1ef7f6a0043c2817da4afbf074a18a663a2"
+    },
+    {
+      "path": "assets/fonts/Lufga-Light.otf",
+      "sha1": "40a2e0e652b98ae49a79b55fd9acc840de11bc97"
+    },
+    {
+      "path": "assets/fonts/Lufga-LightItalic.otf",
+      "sha1": "c558aa8b49d5ba38f97b39b557d202d391eddb33"
+    },
+    {
+      "path": "assets/fonts/Lufga-Medium.otf",
+      "sha1": "d01d3f5154701d0b1dd1562bb6d187ffcd2b6940"
+    },
+    {
+      "path": "assets/fonts/Lufga-MediumItalic.otf",
+      "sha1": "01a69ce195ce52c5bd1e4241412478d9ce95264d"
+    },
+    {
+      "path": "assets/fonts/Lufga-Regular.otf",
+      "sha1": "622a2e9f248f39d8b217243c9eca872f4e7dc0c8"
+    },
+    {
+      "path": "assets/fonts/Lufga-SemiBold.otf",
+      "sha1": "929d1072e340433850b206d06ba9035257e84945"
+    },
+    {
+      "path": "assets/fonts/Lufga-SemiBoldItalic.otf",
+      "sha1": "400e752f98855cf5ff0988ec2436f38c42e4a8e6"
+    },
+    {
+      "path": "assets/fonts/Lufga-Thin.otf",
+      "sha1": "f7ec7de331ac0ae31dbc600aa9f80f325fcbf1e7"
+    },
+    {
+      "path": "assets/fonts/Lufga-ThinItalic.otf",
+      "sha1": "3b682f14f856bccb222b085ef37bdeceebb4f1f6"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+import { StyleSheet, useColorScheme, View } from "react-native";
+import { colors } from "../utils/colors";
+import MainHeader from "../components/MainHeader";
+import NotesList from "../components/NotesList";
+import StickyBottomNav from "../components/StickyBottomNav";
+
+const HomeScreen = ({ navigation }: { navigation: any }) => {
+    const isDarkMode = useColorScheme() === "dark";
+    const backgroundStyle = {
+        backgroundColor: isDarkMode ? colors.black : colors.white,
+    };
+
+    return (
+        <View style={[backgroundStyle, styles.container]}>
+            <MainHeader />
+            <NotesList />
+            <StickyBottomNav navigation={navigation} />
+        </View>
+    );
+};
+export default HomeScreen;
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+});
