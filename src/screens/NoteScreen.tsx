@@ -78,10 +78,10 @@ const NoteScreen = ({ route, navigation }: { route?: any; navigation: any }) => 
         navigation.navigate(RoutesEnum.HOME_SCREEN);
         cleanUp();
     };
-
     const handleSave = async () => {
         if (noteData.heading === "" && noteData.subText === "") {
             handleBackPress();
+            return;
         }
         let newNotesData: IData[];
         if (params?.id) {
@@ -95,6 +95,19 @@ const NoteScreen = ({ route, navigation }: { route?: any; navigation: any }) => 
         handleBackPress();
     };
 
+    const handleDelete = async () => {
+        if (noteData.heading === "" && noteData.subText === "") {
+            handleBackPress();
+            return;
+        }
+        let newNotesData: IData[];
+        const otherNotes: IData[] = data.filter(item => item.id !== params?.id);
+        newNotesData = [...otherNotes];
+        updateContext({ data: newNotesData });
+        await AsyncStorage.setItem("notesData", JSON.stringify(newNotesData));
+        handleBackPress();
+    };
+
     return (
         <View style={[backgroundStyle, styles.container]}>
             <Header
@@ -102,6 +115,7 @@ const NoteScreen = ({ route, navigation }: { route?: any; navigation: any }) => 
                 isFav={noteData.isFav}
                 handleFavClick={handleFavClick}
                 handleBackPress={handleBackPress}
+                handleDelete={handleDelete}
             />
             <TextInput
                 onChangeText={handleHeadingUpdate}
@@ -130,27 +144,32 @@ const Header = ({
     handleSave,
     isFav,
     handleFavClick,
+    handleDelete,
 }: {
     handleBackPress: () => void;
     handleFavClick: () => void;
     handleSave: () => void;
+    handleDelete: () => void;
     isFav?: boolean;
 }) => {
     return (
         <View style={styles.headerContainer}>
             <Pressable onPress={handleBackPress} style={styles.headerBack}>
-                <Icon name="left" size={20} color="black" />
+                <Icon name="left" size={20} color="white" />
             </Pressable>
             <View style={styles.headerRight}>
                 <Pressable onPress={handleSave} style={[styles.save, styles.circle]}>
                     <Icon name={"check"} size={20} color={"white"} />
                 </Pressable>
-                <Pressable onPress={handleFavClick} style={styles.circle}>
+                <Pressable onPress={handleFavClick} style={[styles.circle, styles.save]}>
                     {isFav ? (
                         <Icon name={"heart"} size={20} color={"#db4f1c"} />
                     ) : (
                         <Icon name={"hearto"} size={20} color={"white"} />
                     )}
+                </Pressable>
+                <Pressable onPress={handleDelete} style={[styles.circle]}>
+                    <Icon name={"delete"} size={20} color={"white"} />
                 </Pressable>
             </View>
         </View>
