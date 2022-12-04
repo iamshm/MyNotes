@@ -45,7 +45,6 @@ const MainHeader = () => {
     const handleColorSchemeChange = async () => {
         await AsyncStorage.setItem("mode", JSON.stringify(!isDarkMode));
         updateContext({ isDarkMode: !isDarkMode });
-        setExpanded(false);
     };
 
     return (

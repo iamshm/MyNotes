@@ -1,10 +1,11 @@
 import { useContext, useEffect, useState } from "react";
-import { Dimensions, Pressable, StyleSheet, TextInput, View } from "react-native";
+import { Dimensions, FlatList, Pressable, StyleSheet, TextInput, View } from "react-native";
 import { AppContext, IData } from "../utils/context";
 import Icon from "react-native-vector-icons/AntDesign";
-import { generateRandomColor } from "../utils/colors";
+import { colors, generateRandomColor } from "../utils/colors";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { RoutesEnum } from "../utils/constant";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 const NoteScreen = ({ route, navigation }: { route?: any; navigation: any }) => {
     const { params } = route;
@@ -16,6 +17,12 @@ const NoteScreen = ({ route, navigation }: { route?: any; navigation: any }) => 
         backGroundColor: generateRandomColor(),
         isFav: false,
     });
+    const handleCustomBgColor = (color: string) => {
+        setNoteData({
+            ...noteData,
+            backGroundColor: color,
+        });
+    };
 
     const handleFavClick = () => {
         setNoteData({
@@ -23,7 +30,6 @@ const NoteScreen = ({ route, navigation }: { route?: any; navigation: any }) => 
             isFav: !noteData.isFav,
         });
     };
-
     const getNote = async () => {
         const note: IData = data.filter(item => item.id === params?.id)?.[0];
         if (!note) {
@@ -106,7 +112,6 @@ const NoteScreen = ({ route, navigation }: { route?: any; navigation: any }) => 
         await AsyncStorage.setItem("notesData", JSON.stringify(newNotesData));
         handleBackPress();
     };
-
     return (
         <View style={[backgroundStyle, styles.container]}>
             <Header
@@ -133,6 +138,7 @@ const NoteScreen = ({ route, navigation }: { route?: any; navigation: any }) => 
                 multiline={true}
                 style={styles.subText}
             />
+            <ColorPalette handleColorChange={handleCustomBgColor} />
         </View>
     );
 };
@@ -175,6 +181,25 @@ const Header = ({
     );
 };
 
+const ColorPalette = ({ handleColorChange }: { handleColorChange: (color: string) => void }) => {
+    const renderItem = ({ item }: { item: string }) => <ColorCircles data={item} handleColorChange={handleColorChange} />;
+
+    return (
+        <View style={styles.paletteContainer}>
+            <View>
+                <Ionicons name="color-palette-sharp" color={"black"} size={30} />
+            </View>
+            <FlatList horizontal data={colors.palette} renderItem={renderItem} />
+        </View>
+    );
+};
+const ColorCircles = ({ data, handleColorChange }: { data: string; handleColorChange: (color: string) => void }) => {
+    const handlePress = () => {
+        handleColorChange(data);
+    };
+    return <Pressable onPress={handlePress} style={[styles.colorCircles, { backgroundColor: data }]} />;
+};
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -183,7 +208,6 @@ const styles = StyleSheet.create({
     headerContainer: {
         flexDirection: "row",
         paddingVertical: 20,
-        // paddingHorizontal: 10,
         width: Dimensions.get("window").width,
         alignItems: "center",
         justifyContent: "space-between",
@@ -230,5 +254,21 @@ const styles = StyleSheet.create({
     },
     save: {
         marginRight: 5,
+    },
+    paletteContainer: {
+        alignItems: "center",
+        flexDirection: "row",
+        position: "absolute",
+        left: 0,
+        bottom: Dimensions.get("window").width / 20,
+        paddingLeft: 10,
+    },
+    colorCircles: {
+        borderWidth: 1,
+        borderColor: "black",
+        height: 30,
+        width: 30,
+        borderRadius: 15,
+        margin: 3,
     },
 });
