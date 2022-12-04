@@ -1,11 +1,13 @@
-import { StyleSheet, useColorScheme, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { colors } from "../utils/colors";
 import MainHeader from "../components/MainHeader";
 import NotesList from "../components/NotesList";
 import StickyBottomNav from "../components/StickyBottomNav";
+import { useContext } from "react";
+import { AppContext } from "../utils/context";
 
 const HomeScreen = ({ navigation }: { navigation: any }) => {
-    const isDarkMode = useColorScheme() === "dark";
+    const { isDarkMode } = useContext(AppContext);
     const backgroundStyle = {
         backgroundColor: isDarkMode ? colors.black : colors.white,
     };

@@ -10,7 +10,7 @@ const Stack = createNativeStackNavigator();
 const NavigationWrapper = () => {
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName={RoutesEnum.HOME_SCREEN}>
+            <Stack.Navigator initialRouteName={RoutesEnum.SPLASH_SCREEN}>
                 <Stack.Screen
                     options={{
                         headerShown: false,

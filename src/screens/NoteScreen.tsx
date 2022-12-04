@@ -29,7 +29,6 @@ const NoteScreen = ({ route, navigation }: { route?: any; navigation: any }) => 
         if (!note) {
             return;
         }
-        console.log(note.backGroundColor);
         setNoteData({
             id: note.id,
             heading: note.heading,

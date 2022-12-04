@@ -8,12 +8,14 @@ export type IData = {
     isFav?: boolean;
 };
 export type IContextType = {
+    isDarkMode: boolean;
     name: string;
     data: IData[];
     updateContext: (obj: any) => void;
     loading?: boolean;
 };
 export const InitialAppData: IContextType = {
+    isDarkMode: false,
     name: "",
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     updateContext: obj => null,

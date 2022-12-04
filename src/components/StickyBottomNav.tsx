@@ -1,10 +1,11 @@
-import React from "react";
-import { Dimensions, Pressable, StyleSheet, useColorScheme, View } from "react-native";
+import React, { useContext } from "react";
+import { Dimensions, Pressable, StyleSheet, View } from "react-native";
 import Icon from "react-native-vector-icons/AntDesign";
+import { AppContext } from "../utils/context";
 import { RoutesEnum } from "../utils/constant";
 
 const StickyBottomNav = ({ navigation }: { navigation: any }) => {
-    const isDarkMode = useColorScheme() === "dark";
+    const { isDarkMode } = useContext(AppContext);
     const backgroundStyle = {
         backgroundColor: isDarkMode ? "#bcbcbc77" : "#0000002c",
     };

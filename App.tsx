@@ -20,10 +20,12 @@ const App = () => {
         try {
             const notesDataJson = await AsyncStorage.getItem("notesData");
             const nameFromStorage = await AsyncStorage.getItem("name");
+            const colorSchemeJson = await AsyncStorage.getItem("mode");
             const notes = JSON.parse(notesDataJson || "[]");
-            handleContextUpdate({ name: nameFromStorage, data: notes });
+            const colorScheme = JSON.parse(colorSchemeJson || JSON.stringify(isDarkMode));
+            handleContextUpdate({ name: nameFromStorage, data: notes, isDarkMode: colorScheme });
         } catch (e) {
-            console.log("error");
+            console.log("error", e);
             // error reading value
         }
     };
@@ -41,6 +43,7 @@ const App = () => {
             />
             <AppContext.Provider
                 value={{
+                    isDarkMode: contextState.isDarkMode,
                     name: contextState.name,
                     data: contextState.data,
                     updateContext: handleContextUpdate,
